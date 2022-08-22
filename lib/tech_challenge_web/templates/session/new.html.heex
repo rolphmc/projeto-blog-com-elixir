@@ -1,0 +1,31 @@
+<nav class="nav-main">
+    <h1>Enter the challenge</h1>
+    <h6>login: admin | senha: admin</h6>
+    <hr>
+</nav>
+
+
+<br><br>
+<article class="cards-group">
+    <article class="cards-login">
+        <%= form_for @conn, Routes.session_path(@conn, :create), fn f -> %>
+ 
+        <%= label f, :username %>
+        <%= text_input f, :username, placeholder: "Nome de Usuario" %>
+        <span><%= error_tag f, :username %></span>
+        <br><br>
+    
+        <%= label f, :password %>
+        <%= password_input f, :password, placeholder: "Senha" %>
+        <span><%= error_tag f, :password %></span>
+        <br><br>
+        
+        <%= submit "Login" %>
+        <br>
+    
+        <% end %>
+        <br><br>
+        <span><%= link "Back", to: Routes.page_path(@conn, :index) %></span>
+        or   <span><%= link "Join the Challange", to: Routes.users_path(@conn, :signup) %></span>
+    </article>
+</article>

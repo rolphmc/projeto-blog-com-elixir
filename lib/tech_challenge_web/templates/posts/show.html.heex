@@ -1,0 +1,47 @@
+    <nav class="nav-main">
+        <h1><%= @post.title %></h1>
+        <%= if @post.anonymouns do %>
+            <h4>posted by: Anonymouns</h4>      
+        <% else %>
+            <h4>posted by: <%= @post.user.username %></h4>      
+        <% end %> 
+        <hr>
+        <p><%= @post.description %></p>
+    </nav>
+
+    <article class="cards-group">
+        <article class="cards-login">
+            <h3>Discussion 💬</h3>
+            <hr>
+            <%= for comments <- @post.comments do %>
+
+                <%= if comments.anonymouns do %>
+                    <h4>Anonymouns</h4>      
+                <% else %>
+                    <h4><%= comments.user.username %></h4>      
+                <% end %>             
+                    
+                <h5><%= comments.inserted_at %></h5>
+                <p><%= comments.content %></p>
+                
+                <hr>
+            <% end %>
+        </article>
+    </article>
+
+    <article class="cards-group">
+        <article class="cards-login">
+            <h3>Write Comment</h3>
+            <%= if @current_user do %>
+                <%= render TechChallengeWeb.CommentsView, "new.html", post: @post, changeset: @changeset, action: Routes.posts_comments_path(@conn, :create, @post) %>
+            <% else %>
+                <%= link "Login", to: Routes.session_path(@conn, :new) %>
+            |   <%= link "Sign up", to: Routes.users_path(@conn, :signup) %>
+            <% end %>            
+            <span><%= link "Back", to: Routes.page_path(@conn, :index) %></span>
+        </article>
+    </article>
+
+
+
+  

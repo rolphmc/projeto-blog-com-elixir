@@ -1,0 +1,42 @@
+<article class="cards-group">
+    <article class="cards-login">
+        <.form let={f} for={@changeset} action={@action}>   
+            
+            <br> 
+            <%= if @changeset.action do %>
+                <div class="alert alert-danger">
+                    <p> Something went wrong! check below </p>
+                </div>
+            <% end %>
+
+            <br><br>            
+            <%= label f, :anonymouns %>
+            <%= checkbox f, :anonymouns %>
+            <%= error_tag f, :anonymouns %>
+            <br><br>
+            <%= label f, :category1, "Category 1"%><br>
+            <%= select f, :category1, category_select_options(@categories),
+            prompt: "select" %> &nbsp;
+            <br><br>
+            <%= label f, :category2, "Category 2"%><br>
+            <%= select f, :category2, category_select_options(@categories),
+            prompt: "select" %> &nbsp;
+            <br><br>
+            <%= label f, :title %><br>
+            <%= text_input f, :title %>
+            <%= error_tag f, :title %>
+            <br><br>            
+            <%= label f, :description %><br>
+            <%= textarea f, :description %>
+            <%= error_tag f, :description %>
+            <br><br>            
+            <%= label f, :image %><br>
+            <%= text_input f, :image %>
+            <%= error_tag f, :image %>
+    
+            <br><br><br>
+            <div><%= submit "Save" %></div>
+            <br>
+        </.form>
+    </article>
+</article>

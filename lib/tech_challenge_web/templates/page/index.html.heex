@@ -1,0 +1,41 @@
+<nav class="nav-main">
+    <h1>Welcome to My Blog!</h1>
+    <ul>
+        <%= if @current_user do %>
+                <%= link "+ Create Post ", to: Routes.posts_path(@conn, :new) %> &nbsp;
+            |   <%= link "Log out", to: Routes.session_path(@conn, :delete, @current_user), method: "delete" %> &nbsp;
+            |   User: <%= @current_user.username %>
+            <% else %>
+                <%= link "Login", to: Routes.session_path(@conn, :new) %>
+            |   <%= link "Sign up", to: Routes.users_path(@conn, :signup) %>
+        <% end %>
+    </ul>
+    <hr>
+</nav>
+
+<article class="cards-group">
+    <%= for posts <- @posts do %>
+    <article class="cards">
+        <img src={posts.image} height="100" width="100" alt="icon post" class="icon-img" />
+        <h2><%= link posts.title, to: Routes.posts_path(@conn, :show, posts.id) %></h2>
+        <h6># <%= posts.category1 %> | # <%= posts.category2 %> </h6>
+        <p><%= posts.description %></p>
+        <div class="knowledge-level-div">
+            <span style="width:60%" class="knowledge-level"><th> <%= posts.categories %></th></span>
+        </div>
+        <div class="discuss">
+                <%= link "Discuss", to: Routes.posts_path(@conn, :show, posts.id) %>   
+            <%= if @current_user do %>
+                |   <%= link " edit", to: Routes.posts_path(@conn, :edit, posts.id) %>
+                |   <%= link " delete", to: Routes.posts_path(@conn, :delete, posts.id), method: :delete, data:
+                [confirm: "Are you sure?"] %> 
+            <% end %>
+        </div>
+    </article>
+    <% end %>
+</article>
+
+
+
+
+

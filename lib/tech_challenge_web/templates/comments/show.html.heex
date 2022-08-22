@@ -1,0 +1,32 @@
+    <nav class="nav-main">
+        <h1><%= @post.title %></h1>
+        <h4>posted by: <%= @user %></h4>
+        <hr>
+        <p><%= @post.description %></p>
+    </nav>
+
+    <article class="cards-group">
+        <article class="cards-login">
+            <h3>Discussion 💬</h3>
+            <hr>
+            <%= for comments <- @comments do %>
+
+                <h4><%= comments.user.username %></h4>
+                <h5><%= comments.inserted_at %></h5>
+                <p><%= comments.content %></p>
+
+            <% end %>
+        </article>
+    </article>
+
+    <article class="cards-group">
+        <article class="cards-login">
+            <%= render "form.html", Map.put(assigns, :action, Routes.comments_path(@conn, :create)) %>
+
+            <span><%= link "Back", to: Routes.page_path(@conn, :index) %></span>
+        </article>
+    </article>
+
+
+
+  
