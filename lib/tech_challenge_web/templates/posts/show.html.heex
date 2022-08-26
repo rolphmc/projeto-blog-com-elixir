@@ -6,7 +6,7 @@
             <h4>posted by: <%= @post.user.username %></h4>      
         <% end %> 
         <hr>
-        <p><%= @post.description %></p>
+        <div class="text-sm-start"><%= raw(convert_mkdw(@post.description)) %></div>
     </nav>
 
     <article class="cards-group">
@@ -22,7 +22,7 @@
                 <% end %>             
                     
                 <h5><%= comments.inserted_at %></h5>
-                <p><%= comments.content %></p>
+                <div class="text-sm-start"><%= raw(convert_mkdw(comments.content)) %></div>
                 
                 <hr>
             <% end %>

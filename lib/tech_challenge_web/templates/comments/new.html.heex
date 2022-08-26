@@ -8,15 +8,16 @@
     <% end %>
 
     <br><br>            
-    <%= label f, :anonymouns %>
-    <%= checkbox f, :anonymouns %>
+    <%= label f, :anonymouns, class: "w-75 form-label" %>
+    <%= checkbox f, :anonymouns, class: "p-2 w-50" %>
     <%= error_tag f, :anonymouns %>
     <br>        
-    <%= label f, :content %><br>
-    <%= textarea f, :content %>
+    <%= label f, :content, class: "form-label" %><br>
+    <%= textarea f, :content, class: "w-75", rows: "7" %>
     <%= error_tag f, :content %>    
+    <p class="text-left" style="font-weight: lighter"><i>Markdown supported</i></p>
     <br><br><br>
-    <div><%= submit "Save" %></div>
+    <div><%= submit "Save", class: "btn btn-primary btn-lg" %></div>
     <br>
 
 </.form>

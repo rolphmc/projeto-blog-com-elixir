@@ -1,26 +1,27 @@
 <nav class="nav-main">
     <h1>Enter the challenge</h1>
-    <h6>login: admin | senha: admin</h6>
     <hr>
 </nav>
 
-
-<br><br>
 <article class="cards-group">
     <article class="cards-login">
+
+        <p style="color:red" role="alert"><%= get_flash(@conn, :info) %></p>
+        <p style="color:red" role="alert"><%= get_flash(@conn, :error) %></p>
+
         <%= form_for @conn, Routes.session_path(@conn, :create), fn f -> %>
  
-        <%= label f, :username %>
-        <%= text_input f, :username, placeholder: "Nome de Usuario" %>
+        <%= label f, :username, class: "w-50 form-label" %>
+        <%= text_input f, :username, placeholder: "Nome de Usuario", class: "p-2 w-50" %>
         <span><%= error_tag f, :username %></span>
         <br><br>
-    
-        <%= label f, :password %>
-        <%= password_input f, :password, placeholder: "Senha" %>
+
+        <%= label f, :password, class: "w-50 form-label" %>
+        <%= password_input f, :password, placeholder: "Senha", class: "p-2 w-50" %>
         <span><%= error_tag f, :password %></span>
         <br><br>
-        
-        <%= submit "Login" %>
+
+        <%= submit "Login", class: "btn btn-primary" %>
         <br>
     
         <% end %>

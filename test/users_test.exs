@@ -6,7 +6,6 @@ defmodule TechChallenge.UsersTest do
   describe "register_user/1" do
     @valid_attrs %{
       username: "admin",
-      image: "https://cdn.com",
       email: "admin@admin.com",
       password: "secret"
     }
@@ -14,7 +13,6 @@ defmodule TechChallenge.UsersTest do
 
     test "with valid data inserts user" do
       assert {:ok, user} = Users.register_user(@valid_attrs)
-      assert user.image == "https://cdn.com"
       assert user.username == "admin"
       assert user.email == "admin@admin.com"
     end
@@ -26,7 +24,7 @@ defmodule TechChallenge.UsersTest do
     test "verify unique usernames" do
       assert {:ok, _user} = Users.register_user(@valid_attrs)
       assert {:error, changeset} = Users.register_user(@valid_attrs)
-      assert %{username: ["has already been taken"]} = errors_on(changeset)
+      assert %{username: ["Username already exist"]} = errors_on(changeset)
     end
 
     test "not accept long usernames" do
@@ -38,7 +36,7 @@ defmodule TechChallenge.UsersTest do
     test "must have at least 4 characters of password" do
       attrs = Map.put(@valid_attrs, :password, "122")
         {:error, changeset} = Users.register_user(attrs)
-      assert %{password: ["should be at least 4 character(s)"]} = errors_on(changeset)
+      assert %{password: ["Max. 40 chars"]} = errors_on(changeset)
     end
   end
 

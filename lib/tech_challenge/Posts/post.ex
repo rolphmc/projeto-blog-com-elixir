@@ -44,4 +44,5 @@ defmodule TechChallenge.Posts.Post do
   def list_all_posts(query) do
     from c in query, preload: [user: c], order_by: [desc: c.inserted_at]
   end
+
 end

@@ -49,7 +49,10 @@ defmodule TechChallenge.MixProject do
       {:gettext, "~> 0.18"},
       {:jason, "~> 1.2"},
       {:pbkdf2_elixir, "~> 2.0"},
-      {:plug_cowboy, "~> 2.5"}
+      {:plug_cowboy, "~> 2.5"},
+      {:dart_sass, "~> 0.5", runtime: Mix.env() == :dev},
+      {:earmark, "~> 1.4"},
+      {:html_sanitize_ex, "~> 1.3"}
     ]
   end
 
@@ -65,7 +68,7 @@ defmodule TechChallenge.MixProject do
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
-      "assets.deploy": ["esbuild default --minify", "phx.digest"]
+      "assets.deploy": ["esbuild default --minify", "sass default --no-source-map --style=compressed", "phx.digest"]
     ]
   end
 end

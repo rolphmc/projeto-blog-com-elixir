@@ -77,10 +77,16 @@ defmodule TechChallenge.Posts do
     |> Repo.all()
   end
 
+  def get_category(id) do
+    cat = Category |> Repo.get!(id)
+    cat.category
+  end
+
   #|------------------- comments
 
   def get_comment!(id) do
     Comment |> Repo.get!(id)
+    |> Comment.convert_md()
   end
 
   def create_comment(%User{} = user, %Post{} = post, attrs \\ %{}) do

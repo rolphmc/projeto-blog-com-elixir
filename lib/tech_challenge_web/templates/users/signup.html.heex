@@ -3,8 +3,15 @@
     <hr>
 </nav>
 
+<div>
+    
+</div>
 <article class="cards-group">
     <article class="cards-login">
+
+        <p style="color:red" role="alert"><%= get_flash(@conn, :info) %></p>
+        <p style="color:red" role="alert"><%= get_flash(@conn, :error) %></p>
+
         <%= form_for @user, Routes.users_path(@conn, :register), fn f -> %>
  
         <%= if @user.action do %>
@@ -13,22 +20,22 @@
             </div>
         <% end %>
     
-        <%= label f, :username %>
-        <%= text_input f, :username, placeholder: "Nome de Usuario" %>
-        <span><%= error_tag f, :username %></span>
+        <%= label f, :username, class: "w-50 form-label" %>
+        <%= text_input f, :username, placeholder: "Nome de Usuario", class: "p-2 w-50" %>
+        <%= error_tag f, :username %>
         <br><br>
     
-        <%= label f, :email %>
-        <%= text_input f, :email, placeholder: "E-mail" %>
-        <span><%= error_tag f, :email %></span>
+        <%= label f, :email, class: "w-50 form-label" %>
+        <%= text_input f, :email, placeholder: "E-mail", class: "p-2 w-50" %>
+        <%= error_tag f, :email %>
         <br><br>
     
-        <%= label f, :password %>
-        <%= password_input f, :password, placeholder: "Senha" %>
-        <span><%= error_tag f, :password %></span>
+        <%= label f, :password, class: "w-50 form-label" %>
+        <%= password_input f, :password, placeholder: "Senha", class: "p-2 w-50" %>
+        <%= error_tag f, :password %>
         <br><br>
         
-        <%= submit "Sign up" %>
+        <%= submit "Sign up", class: "btn btn-primary" %>
         <br>
     
     <% end %>

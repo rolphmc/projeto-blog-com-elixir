@@ -2,7 +2,6 @@ defmodule TechChallenge.Users.User do
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias TechChallenge.RegExp
   alias TechChallenge.Posts.Post
   alias TechChallenge.Posts.Comment
 
@@ -32,11 +31,11 @@ defmodule TechChallenge.Users.User do
     user
     |> cast(params, @fields)
     |> validate_required(@fields)
-    |> validate_format(:username, RegExp.slug(), message: RegExp.slug_message)
-    |> validate_length(:username, max: 40, message: RegExp.max_char_40_message)
-    |> validate_format(:email, RegExp.email(), message: "email already exist") #show error when email is not exclusive
-    |> unique_constraint(:username)
-    |> validate_length(:password, min: 4)
+    |> validate_format(:username, ~r/\A[a-z|0-9]+\z/, message: "just chars: a-z, 0-9, -, _")
+    |> validate_length(:username, max: 40, message: "Max. 40 chars")
+    |> validate_format(:email, ~r/^\S+@\S+\.\S+$/, message: "email already exist")
+    |> unique_constraint(:username, message: "Username already exist")
+    |> validate_length(:password, min: 4, message: "Max. 40 chars")
     |> put_pass_hash()
   end
 

@@ -24,10 +24,10 @@ defmodule TechChallenge.Posts.Comment do
     |> cast(params, @fields)
     |> validate_required(@fields)
   end
-
   def insert_changeset(comment, params \\ %{}) do
     comment
     |> cast(params, @fields)
     |> validate_required(@fields)
   end
+
 end

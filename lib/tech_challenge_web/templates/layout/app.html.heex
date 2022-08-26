@@ -1,16 +1,21 @@
 <style>
-  .nav-main{display: block; height: auto; flex-grow: 1; flex-basis: 300px; text-align: center; padding: 5px 300px 10px 300px; margin: 10px; border-radius: 5px; box-shadow: 0 0 10px #cacaca; font-size: 18pt;}
+  .nav-main{display: block; height: auto; flex-grow: 1; flex-basis: 300px; text-align: center; padding: 100px 300px 10px 300px; margin: 10px; border-radius: 5px; box-shadow: 0 0 10px #cacaca; font-size: 18pt;}
   .cards-group{ padding: 0; display: flex; justify-content: space-between; flex-wrap: wrap; text-align: left;}
-  .cards{ display: block; height: auto; flex-grow: 1; flex-basis: 300px; text-align: right; padding: 40px 40px 40px 40px; margin: 10px; border-radius: 5px; box-shadow: 0 0 10px #cacaca; position: relative;}
+  .cards{display: block; height: auto; flex-grow: 1; flex-basis: 300px; text-align: right; padding: 40px 40px 40px 40px; margin: 10px; border-radius: 5px; box-shadow: 0 0 10px #cacaca; position: relative;}
   .cards-login{ display: block; height: auto; flex-grow: 1; flex-basis: 300px; text-align: center; padding: 40px 300px 40px 300px; margin: 10px; border-radius: 5px; box-shadow: 0 0 10px #cacaca; position: relative;}
   .cards .btn {padding: 20px;}
   .icon-img{margin-bottom: 25px;}
   .discuss{font-size: 18pt;position: absolute; bottom: 0; left: 0; padding: 20px;}
   main.container{max-width: 90%;}
+  main{max-width: 90%; margin: 0 auto;}
+  
+  .hr-mkdw{width:50%; border-style: groove;}
 </style>
 
 <main>
+  <!--
   <p role="alert"><%= get_flash(@conn, :info) %></p>
   <p role="alert"><%= get_flash(@conn, :error) %></p>
+  -->
   <%= @inner_content %>
 </main>

@@ -10,6 +10,48 @@
     <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/app.js")}></script>
   </head>
   <body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <div class="container-fluid">
+        <%= link "My Blog TechTest", to: Routes.page_path(@conn, :index),  class: "navbar-brand" %>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Publications</a>
+              <ul class="dropdown-menu" aria-labelledby="dropdown01">
+                <%= for posts <- posts() do %>
+                  <li><%= link posts.title, to: Routes.posts_path(@conn, :show, posts.id), class: "dropdown-item" %></li>
+                <% end %>
+              </ul>
+            </li>
+          </ul>
+          <ul class="navbar-nav mb-2 mb-md-0">
+            <%= if @current_user do %>
+              <li class="nav-item">
+                <%= link "+ Create Post", to: Routes.posts_path(@conn, :new), class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link "Log out", to: Routes.session_path(@conn, :delete, @current_user), method: "delete", class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link border-start border-secondary bg-secondary"> User: <%= @current_user.username %></a>
+              </li>
+            <% else %>
+              <li>
+                <%= link "Login", to: Routes.session_path(@conn, :new), class: "nav-link" %>
+              </li>
+              <li>
+                <%= link "Sign up", to: Routes.users_path(@conn, :signup), class: "nav-link border-start border-secondary bg-secondary" %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
     <%= @inner_content %>
   </body>
 </html>

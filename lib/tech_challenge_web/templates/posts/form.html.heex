@@ -1,41 +1,43 @@
 <article class="cards-group">
     <article class="cards-login">
+
+        <p style="color:red" role="alert"><%= get_flash(@conn, :info) %></p>
+        <p style="color:red" role="alert"><%= get_flash(@conn, :error) %></p>
+
         <.form let={f} for={@changeset} action={@action}>   
-            
-            <br> 
+         
             <%= if @changeset.action do %>
                 <div class="alert alert-danger">
                     <p> Something went wrong! check below </p>
                 </div>
             <% end %>
 
-            <br><br>            
-            <%= label f, :anonymouns %>
-            <%= checkbox f, :anonymouns %>
+            <%= label f, :anonymouns?, class: "w-75 form-label" %>
+            <%= checkbox f, :anonymouns, class: "p-2 w-50" %>
             <%= error_tag f, :anonymouns %>
             <br><br>
-            <%= label f, :category1, "Category 1"%><br>
+            <%= label f, :category1, "Category 1", class: "form-label"%><br>
             <%= select f, :category1, category_select_options(@categories),
-            prompt: "select" %> &nbsp;
+            prompt: "select", class: "p-2 w-75" %> &nbsp;
             <br><br>
-            <%= label f, :category2, "Category 2"%><br>
+            <%= label f, :category2, "Category 2", class: "form-label"%><br>
             <%= select f, :category2, category_select_options(@categories),
-            prompt: "select" %> &nbsp;
+            prompt: "select", class: "p-2 w-75" %> &nbsp;
             <br><br>
-            <%= label f, :title %><br>
-            <%= text_input f, :title %>
+            <%= label f, :title, class: "form-label" %><br>
+            <%= text_input f, :title, class: "p-2 w-75" %>
             <%= error_tag f, :title %>
-            <br><br>            
-            <%= label f, :description %><br>
-            <%= textarea f, :description %>
+            <br><br>         
+            <%= label f, :description, class: "form-label" %><br>
+            <%= textarea f, :description, class: "w-75", rows: "7" %>
             <%= error_tag f, :description %>
-            <br><br>            
-            <%= label f, :image %><br>
-            <%= text_input f, :image %>
+            <p class="text-left" style="font-weight: lighter"><i>Markdown supported</i></p>
+            <br> 
+            <%= label f, :image, class: "w-50 form-label" %><br>
+            <%= text_input f, :image, class: "p-2 w-75" %>
             <%= error_tag f, :image %>
-    
-            <br><br><br>
-            <div><%= submit "Save" %></div>
+            <br><br>    
+            <div><%= submit "Save", class: "btn btn-primary btn-lg" %></div>
             <br>
         </.form>
     </article>

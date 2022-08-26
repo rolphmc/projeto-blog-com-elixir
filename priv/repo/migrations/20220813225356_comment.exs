@@ -6,7 +6,7 @@ defmodule TechChallenge.Repo.Migrations.Comment do
       add :content, :text, null: false
       add :anonymouns, :boolean
       add :user_id, references(:users)
-      add :post_id, references(:posts)
+      add :post_id, references(:posts, on_delete: :delete_all)
 
       timestamps()
     end
