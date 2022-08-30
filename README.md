@@ -13,10 +13,16 @@ Nesse projeto desenvolvi um blog onde é possível criar publicações e coment�
 ### Diretrizes seguidas
 
 ✔️ O projeto precisa ser feito utilizando [Elixir](http://elixir-lang.org/) e [Phoenix](https://www.phoenixframework.org/)
+
 ✔️ Você precisa utilizar algum framework CSS como [Bootstrap](https://getbootstrap.com/) e [TailwindCSS](https://tailwindcss.com/) no frontend
+
 ✔️ Os testes presentes na pasta `/test` precisam passar corretamente
+
 ✔️ Todo o código adicional que for incluído precisa ser testado
+![](https://raw.githubusercontent.com/rolphmc/tech-challenge-elixir/main/assets/images/test.jpg)
+
 ✔️ O código Elixir deve seguir as [convenções de nomenclatura](https://hexdocs.pm/elixir/1.12/naming-conventions.html) da linguagem
+
 ✔️ As mensagens de commit presisam seguir o padrão [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
 
 <!--
