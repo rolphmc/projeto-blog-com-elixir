@@ -56,7 +56,7 @@ Se você for mais experiente e quiser nos impressionar, vamos deixar alguns tóp
 ## Referências
 
 Bifurcação do proejeto original e commits:
-- [Tech Challenge Tradesquash](https://github.com/rolphmc/tech-challenge-blog)
+[Tech Challenge Tradesquash](https://github.com/rolphmc/tech-challenge-blog)
 
 - [Elixir School](https://elixirschool.com/en)
 - [Elixir Language](https://elixir-lang.org/getting-started/introduction.html)
